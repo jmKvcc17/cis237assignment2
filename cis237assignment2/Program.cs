@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace cis237assignment2
 {
+
     class Program
     {
         /// <summary>
@@ -28,7 +29,7 @@ namespace cis237assignment2
             /// You don't have to, but it might make your life easier.
             /// </summary>
             char[,] maze1 = 
-            { { '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#' },
+          { { '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#' },
             { '#', '.', '.', '.', '#', '.', '.', '.', '.', '.', '.', '#' },
             { '#', '.', '#', '.', '#', '.', '#', '#', '#', '#', '.', '#' },
             { '#', '#', '#', '.', '#', '.', '.', '.', '.', '#', '.', '#' },
@@ -46,6 +47,7 @@ namespace cis237assignment2
             /// </summary>
             MazeSolver mazeSolver = new MazeSolver();
 
+            mazeSolver.printMaze(maze1);
             //Create the second maze by transposing the first maze
             char[,] maze2 = transposeMaze(maze1);
 
@@ -56,6 +58,8 @@ namespace cis237assignment2
 
             //Solve the transposed maze.
             mazeSolver.SolveMaze(maze2, X_START, Y_START);
+
+            Console.ReadLine();
 
         }
 

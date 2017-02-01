@@ -55,5 +55,20 @@ namespace cis237assignment2
         {
             //Implement maze traversal recursive call
         }
+
+        // PRINT OUT THE MAZE ********************************
+        public void printMaze(char[,] maze)
+        {
+            for (int row = 0; row < 12; row++)
+            {
+                for (int col = 0; col < 12; col++)
+                {
+                    if (col < 11)
+                        Console.Write("{0}", maze[row, col]);
+                    else
+                        Console.WriteLine("{0}", maze[row, col]);
+                }
+            }
+        }
     }
 }
