@@ -42,6 +42,7 @@ namespace cis237assignment2
             { '#', '.', '.', '.', '.', '.', '.', '#', '.', '.', '.', '#' },
             { '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#' } };
 
+
             /// <summary>
             /// Create a new instance of a mazeSolver.
             /// </summary>

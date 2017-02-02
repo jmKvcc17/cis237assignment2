@@ -43,6 +43,7 @@ namespace cis237assignment2
             this.yStart = yStart;
 
             //Do work needed to use mazeTraversal recursive call and solve the maze.
+            mazeTraversal(maze, xStart, yStart);
         }
 
 
@@ -50,10 +51,12 @@ namespace cis237assignment2
         /// This should be the recursive method that gets called to solve the maze.
         /// Feel free to change the return type if you like, or pass in parameters that you might need.
         /// This is only a very small starting point.
-        /// </summary>
-        private void mazeTraversal()
+        /// </summary> 
+        private void mazeTraversal(char[,] maze, int xStart, int yStart)
         {
             //Implement maze traversal recursive call
+            // Base case
+            if (maze[])
         }
 
         // PRINT OUT THE MAZE ********************************
