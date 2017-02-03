@@ -56,7 +56,13 @@ namespace cis237assignment2
         {
             //Implement maze traversal recursive call
             // Base case
-            if (maze[])
+            //if ((maze xStart == -1 || yStart == 12))
+            //      print(you win)
+            //else
+            //      mazeTraversal(char[,], xStart, yStart + 1) // move up
+            //      mazeTraversal(char[,], xStart, yStart - 1) // move down
+            //      mazeTraversal(char[,], xStart - 1, yStart) // move left
+            //      mazeTraversal(char[,], xStart + 1, yStart) // move right
         }
 
         // PRINT OUT THE MAZE ********************************
