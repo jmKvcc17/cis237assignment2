@@ -56,13 +56,31 @@ namespace cis237assignment2
         {
             //Implement maze traversal recursive call
             // Base case
-            //if ((maze xStart == -1 || yStart == 12))
-            //      print(you win)
-            //else
-            //      mazeTraversal(char[,], xStart, yStart + 1) // move up
-            //      mazeTraversal(char[,], xStart, yStart - 1) // move down
-            //      mazeTraversal(char[,], xStart - 1, yStart) // move left
-            //      mazeTraversal(char[,], xStart + 1, yStart) // move right
+            if ((xStart == -1 || yStart == 12))
+            {
+                Console.WriteLine("You win");
+            }
+            else if (maze[xStart, yStart] == '#')
+            {
+                //backOut???
+                mazeTraversal(maze, xStart, yStart - 1); // move up
+                mazeTraversal(maze, xStart, yStart + 1); // move down
+                mazeTraversal(maze, xStart + 1, yStart); // move left
+                mazeTraversal(maze, xStart - 1, yStart); // move right
+            }
+            else
+            {
+                mazeTraversal(maze, xStart, yStart + 1); // move up
+                this.printMaze(maze);
+                mazeTraversal(maze, xStart, yStart - 1); // move down
+                this.printMaze(maze);
+                mazeTraversal(maze, xStart - 1, yStart); // move left
+                this.printMaze(maze);
+                mazeTraversal(maze, xStart + 1, yStart); // move right
+                this.printMaze(maze);
+
+
+            }
         }
 
         // PRINT OUT THE MAZE ********************************
