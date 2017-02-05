@@ -57,6 +57,9 @@ namespace cis237assignment2
             int newX;
             int newY;
 
+            newX = xStart;
+            newY = yStart;
+
 
             this.printMaze(maze);
             Console.ReadLine();
@@ -81,7 +84,6 @@ namespace cis237assignment2
                     maze[xStart, yStart] = 'O';
                 else
                     maze[xStart, yStart] = 'X';
-
 
                 mazeTraversal(maze, xStart, yStart - 1); // move down
             }
@@ -118,6 +120,7 @@ namespace cis237assignment2
                 return true;
             else
                 return false;
+
         }
 
 
