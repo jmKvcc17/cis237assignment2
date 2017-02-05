@@ -54,33 +54,54 @@ namespace cis237assignment2
         /// </summary> 
         private void mazeTraversal(char[,] maze, int xStart, int yStart)
         {
+            int newX;
+            int newY;
+
+            
+            this.printMaze(maze);
+            Console.ReadLine();
+            Console.Clear();
+            
             //Implement maze traversal recursive call
             // Base case
             if ((xStart == -1 || yStart == 12))
             {
+                this.printMaze(maze);
                 Console.WriteLine("You win");
             }
-            else if (maze[xStart, yStart] == '#')
+            if (CanMove(maze, xStart, yStart + 1) && maze[xStart, yStart + 1] != 'X')
             {
-                //backOut???
-                mazeTraversal(maze, xStart, yStart - 1); // move up
-                mazeTraversal(maze, xStart, yStart + 1); // move down
-                mazeTraversal(maze, xStart + 1, yStart); // move left
-                mazeTraversal(maze, xStart - 1, yStart); // move right
-            }
-            else
-            {
+                maze[xStart, yStart] = 'X';
                 mazeTraversal(maze, xStart, yStart + 1); // move up
-                this.printMaze(maze);
-                mazeTraversal(maze, xStart, yStart - 1); // move down
-                this.printMaze(maze);
-                mazeTraversal(maze, xStart - 1, yStart); // move left
-                this.printMaze(maze);
-                mazeTraversal(maze, xStart + 1, yStart); // move right
-                this.printMaze(maze);
-
-
             }
+            if (CanMove(maze, xStart, yStart - 1) && maze[xStart, yStart - 1] != 'X')
+            {
+                maze[xStart, yStart] = 'X';
+                mazeTraversal(maze, xStart, yStart - 1); // move down
+            }
+            if (CanMove(maze, xStart + 1, yStart) && maze[xStart + 1, yStart] != 'X')
+            {
+                maze[xStart, yStart] = 'X';
+                mazeTraversal(maze, xStart + 1, yStart); // move right
+            }
+            if (CanMove(maze, xStart - 1, yStart) && maze[xStart - 1, yStart] != 'X')
+            {
+                maze[xStart, yStart] = 'X';
+                mazeTraversal(maze, xStart - 1, yStart); // move left
+            }
+        }
+
+        // Checks to see if the next move is legal by making sure that 
+        // the next "tile" is a dot and not the maze wall "#"
+        private bool CanMove(char[,] maze, int startX, int startY)
+        {
+            if (maze[startX, startY] == '.')
+                return true;
+            if (maze[startX, startY] == '#')
+                return false;
+            else
+                return true;
+
         }
 
         // PRINT OUT THE MAZE ********************************

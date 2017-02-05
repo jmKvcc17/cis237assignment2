@@ -48,17 +48,17 @@ namespace cis237assignment2
             /// </summary>
             MazeSolver mazeSolver = new MazeSolver();
 
-            mazeSolver.printMaze(maze1);
+           // mazeSolver.printMaze(maze1);
 
             //Create the second maze by transposing the first maze
             char[,] maze2 = transposeMaze(maze1);
 
             Console.WriteLine();
-            mazeSolver.printMaze(maze2);
+         //   mazeSolver.printMaze(maze2);
             /// <summary>
             /// Tell the instance to solve the first maze with the passed maze, and start coordinates.
             /// </summary>
-            mazeSolver.SolveMaze(maze1, X_START, Y_START);
+            mazeSolver.SolveMaze(maze1, X_START, Y_START); 
 
             //Solve the transposed maze.
             mazeSolver.SolveMaze(maze2, X_START, Y_START);
