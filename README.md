@@ -41,5 +41,7 @@ Don't forget that you must have a base case for your recursive method or you wil
 | **Total**           | **100**|
 
 ## Outside Resources Used
-
+https://www.cs.bu.edu/teaching/alg/maze/
 ## Known Problems, Issues, And/Or Errors in the Program
+Could not change O's to X's, could not put the last X in a dead end, issues with ending the
+maze, and displaying the Xs changing to Os.

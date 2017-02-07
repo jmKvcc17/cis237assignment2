@@ -82,10 +82,12 @@ namespace cis237assignment2
                 mazeTraversal(maze, xStart - 1, yStart); // move left
             }
 
-                
-
             if (maze[xStart, yStart] == 'X')
                 maze[xStart, yStart] = 'O';
+
+            this.printMaze(maze);
+            Console.ReadLine();
+            Console.Clear();
 
         }
 
