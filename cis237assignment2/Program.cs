@@ -53,7 +53,6 @@ namespace cis237assignment2
             //Create the second maze by transposing the first maze
             char[,] maze2 = transposeMaze(maze1);
 
-            Console.WriteLine();
             //   mazeSolver.printMaze(maze2);
             /// <summary>
             /// Tell the instance to solve the first maze with the passed maze, and start coordinates.

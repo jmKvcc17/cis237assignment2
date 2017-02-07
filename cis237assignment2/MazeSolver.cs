@@ -54,57 +54,32 @@ namespace cis237assignment2
         /// </summary> 
         private void mazeTraversal(char[,] maze, int xStart, int yStart)
         {
-            int newX;
-            int newY;
+            int currentX;
+            int currentY;
 
-            newX = xStart;
-            newY = yStart;
+            //currentX = xStart;
+            //currentY = yStart;
 
 
             this.printMaze(maze);
             Console.ReadLine();
             Console.Clear();
 
+            if (maze[xStart, yStart] == 'X')
+                maze[xStart, yStart] = 'O';
+            else
+                maze[xStart, yStart] = 'X';
+
             //Implement maze traversal recursive call
             // Base case
-           // if (CanMove(maze, xStart, yStart) == false)
-           //     Console.WriteLine("Test");
             if (CanMove(maze, xStart, yStart + 1))
-            {
-                if (maze[xStart, yStart] == 'X')
-                    maze[xStart, yStart] = 'O';
-                else
-                    maze[xStart, yStart] = 'X';
-
                 mazeTraversal(maze, xStart, yStart + 1); // move up
-            }
             if (CanMove(maze, xStart, yStart - 1))
-            {
-                if (maze[xStart, yStart] == 'X')
-                    maze[xStart, yStart] = 'O';
-                else
-                    maze[xStart, yStart] = 'X';
-
                 mazeTraversal(maze, xStart, yStart - 1); // move down
-            }
             if (CanMove(maze, xStart + 1, yStart))
-            {
-                if (maze[xStart, yStart] == 'X')
-                    maze[xStart, yStart] = 'O';
-                else
-                    maze[xStart, yStart] = 'X';
-
                 mazeTraversal(maze, xStart + 1, yStart); // move right
-            }
             if (CanMove(maze, xStart - 1, yStart))
-            {
-                if (maze[xStart, yStart] == 'X')
-                    maze[xStart, yStart] = 'O';
-                else
-                    maze[xStart, yStart] = 'X';
-
                 mazeTraversal(maze, xStart - 1, yStart); // move left
-            }
         }
 
         // Checks to see if the next move is legal by making sure that 
@@ -116,7 +91,7 @@ namespace cis237assignment2
             if (startX >= 12 || startX < 0 || startY >= 12 || startY < 0)
                 rangeBool = true;
 
-            if (rangeBool == false && maze[startX, startY] == '.')
+            if (rangeBool == false && (maze[startX, startY] == '.'))
                 return true;
             else
                 return false;
