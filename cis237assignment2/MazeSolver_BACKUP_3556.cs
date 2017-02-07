@@ -44,7 +44,6 @@ namespace cis237assignment2
 
             //Do work needed to use mazeTraversal recursive call and solve the maze.
             mazeTraversal(maze, xStart, yStart);
-
         }
 
 
@@ -54,9 +53,14 @@ namespace cis237assignment2
         /// This is only a very small starting point.
         /// </summary> 
         private void mazeTraversal(char[,] maze, int xStart, int yStart)
-        //private bool mazeTraversal(char[,] maze, int xStart, int yStart)
         {
-            maze[xStart, yStart] = 'X';
+
+           // if (xStart == maze.GetLength(0) || xStart == 0 || yStart == maze.GetLength(1) || yStart == 0)
+           //     Console.WriteLine("Test");
+
+            
+            //else
+                maze[xStart, yStart] = 'X';
 
             this.printMaze(maze);
             Console.ReadLine();
@@ -66,31 +70,31 @@ namespace cis237assignment2
             //Implement maze traversal recursive call
             // Base case
             if (CanMove(maze, xStart, yStart + 1))
-                mazeTraversal(maze, xStart, yStart + 1);
-                           
+                mazeTraversal(maze, xStart, yStart + 1); // move up
             if (CanMove(maze, xStart, yStart - 1))
-            {
-                mazeTraversal(maze, xStart, yStart - 1);
-            } // move down
+                mazeTraversal(maze, xStart, yStart - 1); // move down
             if (CanMove(maze, xStart + 1, yStart))
-            {
-                mazeTraversal(maze, xStart + 1, yStart);
-            }
-                  // move right
+                mazeTraversal(maze, xStart + 1, yStart); // move right
             if (CanMove(maze, xStart - 1, yStart))
-            {
                 mazeTraversal(maze, xStart - 1, yStart); // move left
-            }
 
             if (maze[xStart, yStart] == 'X')
                 maze[xStart, yStart] = 'O';
-
         }
 
         // Checks to see if the next move is legal by making sure that 
         // the next "tile" is a dot and not the maze wall "#"
         private bool CanMove(char[,] maze, int xStart, int yStart)
         {
+<<<<<<< HEAD
+            bool rangeBool = false;
+
+            if (startX >= 12 || startX < 0 || startY >= 12 || startY < 0)
+                rangeBool = true;
+
+            if ((rangeBool == false && maze[startX, startY] == '.'))
+                return true;
+=======
             if (xStart != maze.GetLength(0) && xStart != 0 && yStart != maze.GetLength(1) && yStart != 0)
             {
                 if (maze[xStart, yStart] == '.')
@@ -98,8 +102,10 @@ namespace cis237assignment2
                 else
                     return false;
             }
+>>>>>>> 4df861b110ea61c7a5e389a78a13d39acef7c580
             else
                 return false;
+
         }
 
 
