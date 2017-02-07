@@ -66,21 +66,23 @@ namespace cis237assignment2
             //Implement maze traversal recursive call
             // Base case
             if (CanMove(maze, xStart, yStart + 1))
-                mazeTraversal(maze, xStart, yStart + 1);
-                           
+            {
+                mazeTraversal(maze, xStart, yStart + 1); // move up 
+            }
             if (CanMove(maze, xStart, yStart - 1))
             {
-                mazeTraversal(maze, xStart, yStart - 1);
-            } // move down
+                mazeTraversal(maze, xStart, yStart - 1); // move down
+            }   
             if (CanMove(maze, xStart + 1, yStart))
             {
-                mazeTraversal(maze, xStart + 1, yStart);
-            }
-                  // move right
+                mazeTraversal(maze, xStart + 1, yStart); // move right
+            }   
             if (CanMove(maze, xStart - 1, yStart))
             {
                 mazeTraversal(maze, xStart - 1, yStart); // move left
             }
+
+                
 
             if (maze[xStart, yStart] == 'X')
                 maze[xStart, yStart] = 'O';
