@@ -54,21 +54,18 @@ namespace cis237assignment2
         /// </summary> 
         private void mazeTraversal(char[,] maze, int xStart, int yStart)
         {
-            int currentX;
-            int currentY;
 
-            //currentX = xStart;
-            //currentY = yStart;
+           // if (xStart == maze.GetLength(0) || xStart == 0 || yStart == maze.GetLength(1) || yStart == 0)
+           //     Console.WriteLine("Test");
 
+            
+            //else
+                maze[xStart, yStart] = 'X';
 
             this.printMaze(maze);
             Console.ReadLine();
             Console.Clear();
 
-            if (maze[xStart, yStart] == 'X')
-                maze[xStart, yStart] = 'O';
-            else
-                maze[xStart, yStart] = 'X';
 
             //Implement maze traversal recursive call
             // Base case
@@ -80,19 +77,22 @@ namespace cis237assignment2
                 mazeTraversal(maze, xStart + 1, yStart); // move right
             if (CanMove(maze, xStart - 1, yStart))
                 mazeTraversal(maze, xStart - 1, yStart); // move left
+
+            if (maze[xStart, yStart] == 'X')
+                maze[xStart, yStart] = 'O';
         }
 
         // Checks to see if the next move is legal by making sure that 
         // the next "tile" is a dot and not the maze wall "#"
-        private bool CanMove(char[,] maze, int startX, int startY)
+        private bool CanMove(char[,] maze, int xStart, int yStart)
         {
-            bool rangeBool = false;
-
-            if (startX >= 12 || startX < 0 || startY >= 12 || startY < 0)
-                rangeBool = true;
-
-            if (rangeBool == false && (maze[startX, startY] == '.'))
-                return true;
+            if (xStart != maze.GetLength(0) && xStart != 0 && yStart != maze.GetLength(1) && yStart != 0)
+            {
+                if (maze[xStart, yStart] == '.')
+                    return true;
+                else
+                    return false;
+            }
             else
                 return false;
 
