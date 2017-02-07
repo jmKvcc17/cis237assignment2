@@ -116,7 +116,7 @@ namespace cis237assignment2
             if (startX >= 12 || startX < 0 || startY >= 12 || startY < 0)
                 rangeBool = true;
 
-            if (rangeBool == false && maze[startX, startY] == '.')
+            if ((rangeBool == false && maze[startX, startY] == '.'))
                 return true;
             else
                 return false;
