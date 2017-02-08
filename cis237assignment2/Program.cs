@@ -47,21 +47,29 @@ namespace cis237assignment2
             /// Create a new instance of a mazeSolver.
             /// </summary>
             MazeSolver mazeSolver = new MazeSolver();
+            
 
            // mazeSolver.printMaze(maze1);
 
             //Create the second maze by transposing the first maze
             char[,] maze2 = transposeMaze(maze1);
 
-            //   mazeSolver.printMaze(maze2);
+            Console.WriteLine("Welcome to the maze solver. This program will solve a\n"
+                + "12 by 12 maze. Press enter to see each step, " + Environment.NewLine + "Xs mean your current position" +
+                " Os will represent when you back track.");
+            Console.WriteLine();
+                
+
             /// <summary>
             /// Tell the instance to solve the first maze with the passed maze, and start coordinates.
             /// </summary>
             //
-            //mazeSolver.SolveMaze(maze1, X_START, Y_START); 
+            mazeSolver.SolveMaze(maze1, X_START, Y_START); // Solve maze 1
+            Console.WriteLine("Maze Completed.");
 
             //Solve the transposed maze.
-            mazeSolver.SolveMaze(maze2, X_START, Y_START);
+            mazeSolver.SolveMaze(maze2, X_START, Y_START); // Solve maze 2
+            Console.WriteLine("Maze Completed.");
 
             Console.ReadLine();
 

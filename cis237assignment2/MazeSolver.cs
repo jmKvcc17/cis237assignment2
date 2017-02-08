@@ -55,38 +55,42 @@ namespace cis237assignment2
         /// This is only a very small starting point.
         /// </summary> 
         private void mazeTraversal(char[,] maze, int xStart, int yStart)
-        //private bool mazeTraversal(char[,] maze, int xStart, int yStart)
         {
 
-
-            
-
-            if (!solved) {
+            if (!solved) // if the maze isn't solved, place x at current position, print,
+                // and get enter stroke and clear the maze
+            {
                 maze[xStart, yStart] = 'X';
                 this.printMaze(maze);
-            Console.ReadLine();
-            Console.Clear();
+                Console.ReadLine();
+                Console.Clear();
+
             }
 
-            //Implement maze traversal recursive call
-            // Base case
-            if (CanMove(maze, xStart, yStart + 1)) // If you can move up
+            isEnd(maze, xStart, yStart); // Check to see if it's the end of the maze
+
+
+                //Implement maze traversal recursive call
+                // Base case
+                if (!solved && CanMove(maze, xStart, yStart + 1)) // If you can move up
+                {
+                    mazeTraversal(maze, xStart, yStart + 1); // move up 
+                }
+                if (!solved && CanMove(maze, xStart, yStart - 1))// If you can move down
+                {
+                    mazeTraversal(maze, xStart, yStart - 1); // move down
+                }
+                if (!solved && CanMove(maze, xStart + 1, yStart))// If you can move right
+                {
+                    mazeTraversal(maze, xStart + 1, yStart); // move right
+                }
+                if (!solved && CanMove(maze, xStart - 1, yStart))// If you can move left
+                {
+                    mazeTraversal(maze, xStart - 1, yStart); // move left
+                }
+
+            if (!solved) // If the maze isn't solved, replace the X with an O
             {
-                mazeTraversal(maze, xStart, yStart + 1); // move up 
-            }
-            if (CanMove(maze, xStart, yStart - 1))// If you can move down
-                {
-                mazeTraversal(maze, xStart, yStart - 1); // move down
-            }   
-            if (CanMove(maze, xStart + 1, yStart))// If you can move right
-                {
-                mazeTraversal(maze, xStart + 1, yStart); // move right
-            }   
-            if (CanMove(maze, xStart - 1, yStart))// If you can move left
-                {
-                mazeTraversal(maze, xStart - 1, yStart); // move left
-            }
-                if (!solved) { 
                 if (maze[xStart, yStart] == 'X')
                     maze[xStart, yStart] = 'O';
 
@@ -94,7 +98,8 @@ namespace cis237assignment2
                 Console.ReadLine();
                 Console.Clear();
 
-            }   
+            
+            }
 
         }
 
@@ -102,22 +107,30 @@ namespace cis237assignment2
         // the next "tile" is a dot and not the maze wall "#"
         private bool CanMove(char[,] maze, int xStart, int yStart)
         {
-            if (xStart != maze.GetLength(0) && xStart != 0 && yStart != maze.GetLength(1) && yStart != 0) // if the move is within the maze
-            {
+
                 if (maze[xStart, yStart] == '.') // if the next move is a period
                 {
                     return true;
                 }
                 else
                     return false;
+                
+        }
+
+        // Checks to see if the move is within the maze
+        void isEnd(char[,] maze, int xStart, int yStart)
+        {
+            if (xStart == maze.GetLength(0) - 1 || xStart == 0 || yStart == maze.GetLength(1) - 1 || yStart == 0) // if the move is within the maze
+            {
+                solved = true;
             }
             else
             {
-                solved = true;
-                return false;
+                solved = false;
             }
                 
         }
+    
 
 
         // PRINT OUT THE MAZE ********************************
