@@ -20,6 +20,7 @@ namespace cis237assignment2
         char[,] maze;
         int xStart;
         int yStart;
+        bool solved = false;
 
         /// <summary>
         /// Default Constuctor to setup a new maze solver.
@@ -56,38 +57,44 @@ namespace cis237assignment2
         private void mazeTraversal(char[,] maze, int xStart, int yStart)
         //private bool mazeTraversal(char[,] maze, int xStart, int yStart)
         {
-            maze[xStart, yStart] = 'X';
 
-            this.printMaze(maze);
+
+            
+
+            if (!solved) {
+                maze[xStart, yStart] = 'X';
+                this.printMaze(maze);
             Console.ReadLine();
             Console.Clear();
-
+            }
 
             //Implement maze traversal recursive call
             // Base case
-            if (CanMove(maze, xStart, yStart + 1))
+            if (CanMove(maze, xStart, yStart + 1)) // If you can move up
             {
                 mazeTraversal(maze, xStart, yStart + 1); // move up 
             }
-            if (CanMove(maze, xStart, yStart - 1))
-            {
+            if (CanMove(maze, xStart, yStart - 1))// If you can move down
+                {
                 mazeTraversal(maze, xStart, yStart - 1); // move down
             }   
-            if (CanMove(maze, xStart + 1, yStart))
-            {
+            if (CanMove(maze, xStart + 1, yStart))// If you can move right
+                {
                 mazeTraversal(maze, xStart + 1, yStart); // move right
             }   
-            if (CanMove(maze, xStart - 1, yStart))
-            {
+            if (CanMove(maze, xStart - 1, yStart))// If you can move left
+                {
                 mazeTraversal(maze, xStart - 1, yStart); // move left
             }
+                if (!solved) { 
+                if (maze[xStart, yStart] == 'X')
+                    maze[xStart, yStart] = 'O';
 
-            if (maze[xStart, yStart] == 'X')
-                maze[xStart, yStart] = 'O';
+                this.printMaze(maze);
+                Console.ReadLine();
+                Console.Clear();
 
-            this.printMaze(maze);
-            Console.ReadLine();
-            Console.Clear();
+            }   
 
         }
 
@@ -95,15 +102,21 @@ namespace cis237assignment2
         // the next "tile" is a dot and not the maze wall "#"
         private bool CanMove(char[,] maze, int xStart, int yStart)
         {
-            if (xStart != maze.GetLength(0) && xStart != 0 && yStart != maze.GetLength(1) && yStart != 0)
+            if (xStart != maze.GetLength(0) && xStart != 0 && yStart != maze.GetLength(1) && yStart != 0) // if the move is within the maze
             {
-                if (maze[xStart, yStart] == '.')
+                if (maze[xStart, yStart] == '.') // if the next move is a period
+                {
                     return true;
+                }
                 else
                     return false;
             }
             else
+            {
+                solved = true;
                 return false;
+            }
+                
         }
 
 
